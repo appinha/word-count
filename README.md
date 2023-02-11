@@ -1,5 +1,5 @@
 <h1 align="center">
-	Word count
+	Word counter
 </h1>
 
 <p align="center">
@@ -23,7 +23,7 @@
 
 ## 🗣️ About
 
-A simple word count application.
+A simple word counter application.
 
 
 ## 🛠️ Usage
@@ -55,6 +55,12 @@ yarn start
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+![screenshot of the app](app/img/app.png)
+
+5. Type some text into the text area, then click the button:
+
+![screenshot of the app counting words](app/img/count.png)
 
 
 ## 📋 Testing
