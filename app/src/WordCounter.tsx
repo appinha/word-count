@@ -32,6 +32,6 @@ export default function WordCounter() {
 }
 
 const countWords = (text: string) => {
-  if (text.length === 0) return 0;
+  if (text.length === 0 || text.trim.length === 0) return 0;
   return text.trim().split(/\s+/).length;
 }
