@@ -58,3 +58,8 @@
   border: 2px solid #1bcbdd;
   color: #1bcbdd;
 }
+
+.warning {
+  color: #f25b4d;
+  font-weight: bold;
+}

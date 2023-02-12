@@ -18,13 +18,13 @@ export default function WordCounter() {
   const renderResult = () => count > 0 ? (
     <p>Total of <b>{count}</b> word{count > 1 ? 's' : null}</p>
   ) : (
-    <p>Please enter some text</p>
+    <p className="warning">Please enter some text</p>
   );
 
   return (
     <div className="Form">
       <span>Type something below</span>
-      <textarea value={text} onChange={handleTextChange} rows={20} cols={80} />
+      <textarea value={text} placeholder="Something..." onChange={handleTextChange} rows={20} cols={80} />
       <button onClick={() => handleButtonClick()}>Count words</button>
       {showCount ? renderResult() : null}
     </div>
