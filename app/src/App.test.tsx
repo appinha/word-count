@@ -37,13 +37,42 @@ describe('<App />', () => {
     expect(container).toHaveTextContent(/Total of 1 word/i);
   });
 
-  test('displays instructions when clicking button with no text', () => {
-    const { container } = renderComponent();
+  describe('displays instructions when', () => {
+    test('clicking button with no text', () => {
+      const { container } = renderComponent();
 
-    const button = screen.getByRole("button");
-    fireEvent.click(button);
+      const button = screen.getByRole("button");
+      fireEvent.click(button);
 
-    expect(container).toHaveTextContent(/Please enter some text/i);
-    expect(container).not.toHaveTextContent(/Total of (.*) word/i);
-  });
+      expect(container).toHaveTextContent(/Please enter some text/i);
+      expect(container).not.toHaveTextContent(/Total of (.*) word/i);
+    });
+
+    test('clicking button with only spaces text', () => {
+      const { container } = renderComponent();
+
+      const textArea = screen.getByRole("textbox");
+      fireEvent.change(textArea, { target: {value: "   "} });
+
+      const button = screen.getByRole("button");
+      fireEvent.click(button);
+
+      expect(container).toHaveTextContent(/Please enter some valid text/i);
+      expect(container).not.toHaveTextContent(/Total of (.*) word/i);
+    });
+
+    test('clicking button with only non-alphabetical text', () => {
+      const { container } = renderComponent();
+
+      const textArea = screen.getByRole("textbox");
+      fireEvent.change(textArea, { target: {value: " , . ! !!! "} });
+
+      const button = screen.getByRole("button");
+      fireEvent.click(button);
+
+      expect(container).toHaveTextContent(/Please enter some valid text/i);
+      expect(container).not.toHaveTextContent(/Total of (.*) word/i);
+    });
+  })
+
 });

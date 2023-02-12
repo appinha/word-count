@@ -18,7 +18,7 @@ export default function WordCounter() {
   const renderResult = () => count > 0 ? (
     <p>Total of <b>{count}</b> word{count > 1 ? 's' : null}</p>
   ) : (
-    <p className="warning">Please enter some text</p>
+    <p className="warning">Please enter some {text.length > 0 ? 'valid' : null} text</p>
   );
 
   return (
@@ -31,7 +31,8 @@ export default function WordCounter() {
   )
 }
 
-const countWords = (text: string) => {
-  if (text.length === 0 || text.trim.length === 0) return 0;
-  return text.trim().split(/\s+/).length;
+const countWords = (originalText: string) => {
+  const text = originalText.replace(/[\W_]+/g, " ").trim();
+  if (text.length === 0) return 0;
+  return text.split(/\s+/).length;
 }
